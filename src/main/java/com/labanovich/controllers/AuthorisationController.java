@@ -3,6 +3,7 @@ package com.labanovich.controllers;
 import com.labanovich.constants.AppConstant;
 import com.labanovich.model.entities.User;
 import com.labanovich.model.exceptions.ServiceException;
+import com.labanovich.model.services.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,6 +13,12 @@ import java.util.Objects;
 
 @WebServlet(name = "AuthorisationController", value = AppConstant.AUTHORIZATION_CONTROLLER)
 public class AuthorisationController extends AbstractController {
+    private UserService userService;
+
+    @Override
+    public void init() throws ServletException {
+        userService = new UserService();
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,6 +29,7 @@ public class AuthorisationController extends AbstractController {
             if (Objects.nonNull(user)) {
                 HttpSession session = request.getSession();
                 session.setAttribute(AppConstant.USER_ATTR, user);
+                session.setAttribute("userID", user.getId());
                 redirect(request, response, AppConstant.INDEX_JSP);
             } else {
                 jumpMessage(request, response, AppConstant.LOGIN_JSP, AppConstant.INVALID_AUTH_MESSAGE);

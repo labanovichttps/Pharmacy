@@ -1,29 +1,40 @@
-DROP TABLE if exists users;
-CREATE table if not exists users
+CREATE SCHEMA if not exists pharmacy_repository;
+create table users
 (
-    id       INT auto_increment primary key,
-    login    VARCHAR(50)  not null unique,
-    name     VARCHAR(50)  not null,
-    surname  VARCHAR(50)  not null,
-    email    varchar(128) not null unique,
-    password varchar(64)  not null
+    id       int auto_increment
+        primary key,
+    login    varchar(50)  not null,
+    name     varchar(50)  not null,
+    surname  varchar(50)  not null,
+    email    varchar(128) not null,
+    password varchar(64)  not null,
+    constraint email
+        unique (email),
+    constraint login
+        unique (login)
 );
 
-DROP TABLE if exists courses;
-CREATE TABLE courses
+create table if not exists cure
 (
-    id          INt auto_increment primary key,
-    title       varchar(25)  not null,
-    subtitle    varchar(50)  not null,
-    description varchar(255) not null,
-    date        date         not null,
-    place       varchar(50)  not null,
-    author      varchar(50)  not null,
-    status      bool         not null,
-    type        varchar(30)  not null,
-    user_id     INT references users (id) on delete cascade
+    id            int primary key auto_increment,
+    name          varchar(128) not null unique,
+    type          varchar(128) not null,
+    dose          varchar(128) not null,
+    delivery_time varchar(128),
+    description   varchar(255) not null
 );
 
-INSERT INTO training_repository.courses (title, subtitle, description, date, place, author, status, type, user_id) VALUES ('Java(18)', 'subtitile', 'new about java 18', '2021-11-25', 'Minsk', 'Labanovich Tsimafei', 1, 'Training', 1);
-INSERT INTO training_repository.courses (title, subtitle, description, date, place, author, status, type, user_id) VALUES ('IT news 2021', 'subtitle', 'news about 2021 year', '2021-11-30', 'Gomel', 'Dima Veko', 0, 'Meeting', 2);
-INSERT INTO training_repository.courses (title, subtitle, description, date, place, author, status, type, user_id) VALUES ('IT conference', 'subtitle', 'closed conference', '2021-11-11', 'Brest', 'Max Golub', 1, 'Conference', 7);
+create table if not exists cure_type
+(
+    id int auto_increment primary key ,
+    cure_id int references cure(id),
+    type varchar(128) not null
+);
+
+CREATE table if not exists user_order
+(
+    user_id int references users (id),
+    cure_id int references cure (id),
+    order_date    date not null
+);
+

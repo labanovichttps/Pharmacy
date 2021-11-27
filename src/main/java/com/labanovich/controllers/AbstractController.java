@@ -11,12 +11,6 @@ import java.io.IOException;
 
 @WebServlet(name = "AbstractController")
 public abstract class AbstractController extends HttpServlet {
-    protected UserService userService;
-
-    @Override
-    public void init() throws ServletException {
-        userService = new UserService();
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

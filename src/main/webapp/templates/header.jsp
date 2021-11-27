@@ -9,34 +9,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
+    <link href="<c:url value="/static/css/header.css"/>" rel="stylesheet">
     <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <script src="webjars/jquery/1.10.2/jquery.min.js"></script>
     <title>Header</title>
 </head>
 <!-- Navbar -->
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<c:url value="<%=AppConstant.INDEX_JSP%>"/>">TrainingLL</a>
-        <form class="d-flex">
-            <c:choose>
-                <c:when test="${empty user}">
-                    <button type="button" class="btn btn-link"
-                            onclick="window.location.href='<c:url value="<%=AppConstant.LOGIN_JSP%>"/>'">Sing in
-                    </button>
-                    <button class="btn btn-outline-success" type="submit"
-                            onclick="window.location.href='<c:url value="<%=AppConstant.REGISTRATION_JSP%>"/>'">Sign up
-                    </button>
-                </c:when>
-                <c:otherwise>
-                    <button type="button" class="btn btn-danger"
-                            onclick="window.location.href='<c:url value="<%=AppConstant.LOGOUT_CONTROLLER%>"/>'">
-                        logout
-                    </button>
-                </c:otherwise>
-            </c:choose>
-        </form>
+<header>
+    <div class="header">
+
+        <div class="logo"><a id="a" href="<c:url value="/index.jsp"/>">PharmacyLL</a></div>
+
+        <div class="entry">
+            <div class="button1"><a class="button-text" href="<c:url value="/Authentication.jsp"/>">ВОЙТИ</a></div>
+
+            <div class="button2"><a class="button-text" href="<c:url value="/Registration.jsp"/>">РЕГИСТРАЦИЯ</a></div>
+        </div>
+
     </div>
-</nav>
+</header>
 
 

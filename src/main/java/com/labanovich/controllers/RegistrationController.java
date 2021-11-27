@@ -3,6 +3,7 @@ package com.labanovich.controllers;
 import com.labanovich.constants.AppConstant;
 import com.labanovich.model.entities.User;
 import com.labanovich.model.exceptions.ServiceException;
+import com.labanovich.model.services.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,6 +13,12 @@ import java.util.Objects;
 
 @WebServlet(name = "RegistrationController", value = AppConstant.REGISTRATION_CONTROLLER)
 public class RegistrationController extends AbstractController {
+    private UserService userService;
+
+    @Override
+    public void init() throws ServletException {
+        userService = new UserService();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

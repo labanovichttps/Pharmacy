@@ -16,9 +16,7 @@
 </head>
 <body>
 <jsp:include page="templates/header.jsp"/>
-<p>Hi Dear ${user.name} ${user.surname}</p>
-<a href="<c:url value="<%=AppConstant.LOGOUT_CONTROLLER%>"/>">LOGOUT</a>
-<button type="button" class="btn btn-success">Success</button>
+<p>${user.username}</p>
 
 </body>
 </html>

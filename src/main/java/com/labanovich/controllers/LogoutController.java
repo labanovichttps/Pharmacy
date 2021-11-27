@@ -15,7 +15,7 @@ public class LogoutController extends AbstractController {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(AppConstant.USER_ATTR);
-        if(Objects.nonNull(user)) {
+        if (Objects.nonNull(user)) {
             session.invalidate();
         }
         jump(request, response, AppConstant.LOGIN_JSP);
