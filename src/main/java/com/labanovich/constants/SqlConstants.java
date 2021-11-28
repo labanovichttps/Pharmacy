@@ -60,4 +60,9 @@ public final class SqlConstants {
     public static final String GET_ALL_ORDERS = "select id, user_initials, user_email, total, order_time\n" +
                                                 "from `user-order`;";
 
+    public static final String EDIT_USER = """
+            update users
+            set name = ?, surname = ?, email = ?
+            where id = ?;""";
+
 }

@@ -65,15 +65,31 @@ public class MySQLUserDAOImpl implements UserDAO {
              PreparedStatement ps = connection.prepareStatement(SqlConstants.GET_USER_BY_ID)) {
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
-            int uId = resultSet.getInt("id");
-            String uLogin = resultSet.getString("login");
-            String uName = resultSet.getString("name");
-            String uSurname = resultSet.getString("surname");
-            String uEmail = resultSet.getString("email");
-            user = new User(uId, uLogin, uName, uSurname, uEmail);
+            if(resultSet.next()) {
+                int uId = resultSet.getInt("id");
+                String uLogin = resultSet.getString("login");
+                String uName = resultSet.getString("name");
+                String uSurname = resultSet.getString("surname");
+                String uEmail = resultSet.getString("email");
+                user = new User(uId, uLogin, uName, uSurname, uEmail);
+            }
         } catch (SQLException e) {
             throw new DAOException();
         }
         return user;
+    }
+
+    @Override
+    public void editUserById(int id, String name, String surname, String email) throws DAOException {
+        try (var connection = ConnectionManager.open();
+             PreparedStatement ps = connection.prepareStatement(SqlConstants.EDIT_USER)) {
+            ps.setString(1, name);
+            ps.setString(2, surname);
+            ps.setString(3, email);
+            ps.setInt(4, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
     }
 }

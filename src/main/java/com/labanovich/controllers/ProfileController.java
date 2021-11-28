@@ -15,7 +15,7 @@ public class ProfileController extends AbstractController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         session.setAttribute("user", user);
-        redirect(request, response, AppConstant.HOME_JSP);
+        redirect(request, response, "/profile");
     }
 
 

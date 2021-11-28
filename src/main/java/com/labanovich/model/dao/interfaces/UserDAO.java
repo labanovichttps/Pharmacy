@@ -9,4 +9,6 @@ public interface UserDAO {
     boolean save(User user, String password) throws DAOException;
 
     User getById(int id) throws DAOException;
+
+    void editUserById(int id, String name, String surname, String email) throws DAOException;
 }

@@ -22,10 +22,10 @@ public class UserService {
     }
 
     public User registration(String name, String surname, String email,
-                                String login, String password) throws ServiceException {
+                             String login, String password) throws ServiceException {
         User user = new User(login, name, surname, email);
         try {
-            if(!userDAO.save(user, password)){
+            if (!userDAO.save(user, password)) {
                 user = null;
             }
         } catch (DAOException e) {
@@ -33,6 +33,22 @@ public class UserService {
         }
 
         return user;
+    }
+
+    public void edit(int id, String name, String surname, String email) throws ServiceException {
+        try {
+            userDAO.editUserById(id, name, surname, email);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public User getById(int id) throws ServiceException {
+        try {
+            return userDAO.getById(id);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
     }
 
 }

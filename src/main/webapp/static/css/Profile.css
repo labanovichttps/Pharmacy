@@ -34,7 +34,7 @@ body {
     width: 100%;
     height: 50px;
     background-color: #006C84;
-    margin-bottom: 5%;
+    margin-bottom: 12%;
 }
 
 .logo {
@@ -60,27 +60,14 @@ body {
 .profile-form-container {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    max-width: 1070px;
+    justify-content: start;
+    grid-gap: 50px;
+    max-width: 500px;
     width: 100%;
     background: #fff;
     box-shadow: 0px 4px 10px 10px
      rgba(0, 0, 0, 0.25);
-     padding-top: 50px;
-     padding-left: 50px;
-     padding-bottom: 34px;
-     padding-right: 30px;
-}
-
-.left-part {
-    display: flex;
-    flex-basis: 50%;
-}
-
-.right-part {
-    display: flex;
-    justify-content: end;
-    flex-basis: 50%;
+    padding: 30px 30px;
 }
 
 .circle {
@@ -92,16 +79,9 @@ body {
     margin-right: 20px;
 }
 
-.info-1 {
+.info {
     display: flex;
     flex-direction: column;
-    max-width: 440px;
-    width: 100%;
-}
-
-.info-2 {
-    display: flex;
-    flex-direction: column;   
 }
 
 .nick-name {
@@ -110,26 +90,29 @@ body {
     font-size: 30px;
     line-height: 35px;
     margin-bottom: 15px;
-    
 }
 
-.info-1-text {
-    font-style: normal;
+.button {
+    width: 153px;
+    height: 37px;
+    background: #006C84;
+    outline: #006C84;
+    border: none;
+
+    color: #fff;
+    font-style: normal; 
     font-weight: normal;
-    font-size: 16px;
-    line-height: 14px;
-    padding-bottom: 12px;
+    font-size: 18px;
+    line-height: 21px;
 }
 
-.info-2-text {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 16px;
-    padding-bottom: 12px;
+.input {
+    height: 42px;
+    width: 100%;
+    font-size: 18px; 
+    border: 1.3px solid #000;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    color: #000;    
+    margin-bottom: 5%;
 }
-
-.button-profile {
-background-color: #003B48;
-}
-
