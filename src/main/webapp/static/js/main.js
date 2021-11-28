@@ -4,6 +4,12 @@ function sendIdForm(id) {
     viewCureForm.submit();
 }
 
+function sendIdForDeleteForm(id) {
+    let deleteCureForm = document.querySelector('#deleteCureForm');
+    deleteCureForm[0].value = id;
+    deleteCureForm.submit();
+}
+
 window.onload = () => {
     let input = document.querySelector('#search_cure');
     input.oninput = function () {

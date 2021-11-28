@@ -32,4 +32,16 @@ public class BasketService {
             throw new ServiceException(e);
         }
     }
+
+    public void deleteById(String id) throws ServiceException {
+        int cureId = Integer.parseInt(id);
+        System.out.println(cureId);
+        try {
+            mySQLBasket.deleteById(cureId);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+
 }

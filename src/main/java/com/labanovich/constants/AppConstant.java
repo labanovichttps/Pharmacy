@@ -22,5 +22,6 @@ public final class AppConstant {
     public static final String INVALID_AUTH_MESSAGE = "Incorrect login or password";
     public static final String INVALID_REGISTRATION_MESSAGE = "Such user already exists";
 
-    public static final String LIST_CURE_CONTROLLER = "/cures";
+    public static final String USER_NOT_AUTHORISED = "USER NOT AUTHORISED";
+
 }

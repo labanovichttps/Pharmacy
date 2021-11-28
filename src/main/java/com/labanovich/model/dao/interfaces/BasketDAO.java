@@ -6,7 +6,7 @@ import com.labanovich.model.exceptions.DAOException;
 import java.util.List;
 
 public interface BasketDAO {
-    void deleteById(int id);
+    void deleteById(int id) throws DAOException;
     void add(int userId, int cureId) throws DAOException;
     List<Cure> getAllByuUerId(int userId) throws DAOException;
 }

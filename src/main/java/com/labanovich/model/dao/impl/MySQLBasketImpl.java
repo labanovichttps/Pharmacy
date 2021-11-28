@@ -13,8 +13,14 @@ import java.util.List;
 
 public class MySQLBasketImpl implements BasketDAO {
     @Override
-    public void deleteById(int id) {
-
+    public void deleteById(int id) throws DAOException {
+        try (var connection = ConnectionManager.open();
+             var ps = connection.prepareStatement(SqlConstants.DELETE_CURE_FROM_BASKET)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
     }
 
     @Override
@@ -23,8 +29,7 @@ public class MySQLBasketImpl implements BasketDAO {
              PreparedStatement ps = connection.prepareStatement(SqlConstants.ADD_NEW_CURE_INTO_BASKET)) {
             ps.setInt(1, userId);
             ps.setInt(2, cureId);
-            int i = ps.executeUpdate();
-            System.out.println("insert = " + i);
+            ps.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
         }
@@ -46,7 +51,8 @@ public class MySQLBasketImpl implements BasketDAO {
                 String deliveryTime = resultSet.getString("delivery_time");
                 String description = resultSet.getString("description");
                 double price = resultSet.getDouble("price");
-                Cure cure = new Cure(id, name, type, dose, deliveryTime, description, price);
+                int basketCureId = resultSet.getInt("basket_cure_id");
+                Cure cure = new Cure(id, name, type, dose, deliveryTime, description, price, basketCureId);
 
                 cures.add(cure);
             }

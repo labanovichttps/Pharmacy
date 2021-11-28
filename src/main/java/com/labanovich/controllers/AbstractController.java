@@ -12,11 +12,6 @@ import java.io.IOException;
 @WebServlet(name = "AbstractController")
 public abstract class AbstractController extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
-
     protected void jump(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         request.getRequestDispatcher(url)
                 .forward(request, response);
