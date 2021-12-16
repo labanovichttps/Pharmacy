@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface OrderDAO {
     List<Order> getAll() throws DAOException;
+    boolean place(int id);
+    List<Order> getByUserId(int id);
 }

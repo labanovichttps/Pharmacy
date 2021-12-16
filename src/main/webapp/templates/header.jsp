@@ -16,16 +16,41 @@
     <title>Header</title>
 </head>
 <!-- Navbar -->
+
 <header>
     <div class="header">
 
         <div class="logo"><a id="a" href="<c:url value="/index.jsp"/>">PharmacyLL</a></div>
+        <c:choose>
 
-        <div class="entry">
-            <div class="button1"><a class="button-text" href="<c:url value="/Authentication.jsp"/>">ВОЙТИ</a></div>
+            <c:when test="${empty user}">
+                <div class="entry">
+                    <div class="button1"><a class="button-text" href="<c:url value="/Authentication.jsp"/>">ВОЙТИ</a>
+                    </div>
 
-            <div class="button2"><a class="button-text" href="<c:url value="/Registration.jsp"/>">РЕГИСТРАЦИЯ</a></div>
-        </div>
+                    <div class="button2"><a class="button-text"
+                                            href="<c:url value="/Registration.jsp"/>">РЕГИСТРАЦИЯ</a></div>
+                </div>
+            </c:when>
+            <c:when test="${not empty user}">
+
+                <div class="right-part">
+                    <div class="busket">
+                        <form action="<c:url value="/basket"/>" method="post">
+                            <button type="submit">КОРЗИНА</button>
+                        </form>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">${user.login}</button>
+                        <div class="dropdown-content">
+                            <a href="<c:url value="/Profile.jsp"/>">Профиль</a>
+                            <a href="#">Мои заказы</a>
+                            <a href="<c:url value="/logout"/>">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
 
     </div>
 </header>

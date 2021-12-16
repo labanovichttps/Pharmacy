@@ -21,19 +21,18 @@ public class DeleteCureFromBasketController extends AbstractController {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = String.valueOf(request.getParameter("cure_id_for_delete"));
-        try {
-            basketService.deleteById(id);
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
-        System.out.println(request.getSession().getAttribute("userID"));
-        jump(request, response, AppConstant.INDEX_JSP);
+        doPost(request, response);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        String id = request.getParameter("cure_id_for_delete");
+        try {
+            basketService.deleteById(id);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        jump(request, response, "basket.jsp");
     }
 }

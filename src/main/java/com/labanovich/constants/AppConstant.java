@@ -15,7 +15,6 @@ public final class AppConstant {
     public static final String LOGOUT_CONTROLLER = "/logout";
 
     public static final String LOGIN_JSP = "/Authentication.jsp";
-    public static final String HOME_JSP = "/home.jsp";
     public static final String INDEX_JSP = "/index.jsp";
     public static final String REGISTRATION_JSP = "/Registration.jsp";
 

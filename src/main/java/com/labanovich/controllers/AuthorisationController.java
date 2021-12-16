@@ -30,7 +30,12 @@ public class AuthorisationController extends AbstractController {
                 HttpSession session = request.getSession();
                 session.setAttribute(AppConstant.USER_ATTR, user);
                 session.setAttribute("userID", user.getId());
-                redirect(request, response, AppConstant.INDEX_JSP);
+                if(user.getId() == 6){
+                    request.getRequestDispatcher("/admin_panel_orders.jsp")
+                            .forward(request, response);
+                }else {
+                    redirect(request, response, AppConstant.INDEX_JSP);
+                }
             } else {
                 jumpMessage(request, response, AppConstant.LOGIN_JSP, AppConstant.INVALID_AUTH_MESSAGE);
             }

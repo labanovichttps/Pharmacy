@@ -36,33 +36,65 @@ public final class SqlConstants {
                             where id = ?;
             """;
 
-    public static final String PLACE_THE_ORDER = """
+    public static final String PLACE_THE_ORDER1 = """
                         update user_basket
                         set order_date = current_timestamp
                         where user_id = ?;
-                        
-                        INSERT INTO `user-order` (user_initials, user_email, total, order_time)
-                        select concat(u.name, ' ', u.surname) user_initials, u.email, sum(c.price) total, ub.order_date
+            """;
+
+    public static final String PLACE_THE_ORDER2 = """
+            INSERT INTO `user-order` (user_id, user_initials, user_email, total, order_time)
+                        select u.id, concat(u.name, ' ', u.surname) user_initials, u.email, sum(c.price) total, ub.order_date
                         from users u
                                  join user_basket ub on u.id = ub.user_id
                                  join cure c on c.id = ub.cure_id
-                                where ub.user_id = 1
+                                where ub.user_id = ?
                         group by ub.order_date;
-                        
-                        insert into user_order_cures (user_id, cure_id, order_date)
+            """;
+    public static final String PLACE_THE_ORDER3 = """
+            insert into user_order_cures (user_id, cure_id, order_date)
                         select user_id, cure_id, order_date
                         from user_basket ub
                         where ub.user_id = ?;
-                        
-                        delete from user_basket
+            """;
+    public static final String PLACE_THE_ORDER4 = """
+            delete from user_basket
                         where user_id = ?;
             """;
-    public static final String GET_ALL_ORDERS = "select id, user_initials, user_email, total, order_time\n" +
+
+    public static final String GET_ORDERS_BY_ID = """
+            select id, user_initials, user_email, total, order_time
+            from `user-order`
+            where user_id = ?;
+            """;
+
+    public static final String GET_ALL_ORDERS = "select id, user_id,user_initials, user_email, total, order_time\n" +
                                                 "from `user-order`;";
 
     public static final String EDIT_USER = """
             update users
             set name = ?, surname = ?, email = ?
             where id = ?;""";
+
+    public static final String DELETE_CURE = """
+            delete
+            from cure
+            where id = ?
+            """;
+
+    public static final String ADD_NEW_CURE = """
+            insert into cure (name, dose, delivery_time, description, type_id, price)
+            values (?, ?, ?, ?, ?, ?);
+            """;
+
+    public static final String GET_ADMIN_USER_ORDERS = """
+            select c.id, ct.type, c.name, c.dose, c.price, c.delivery_time, c.description
+            from (select cure_id
+                  from user_order_cures
+                  where user_id = ?
+                    and order_date = ?) t
+                     join cure c on cure_id = c.id
+                     join cure_type ct on c.type_id = ct.id;
+            """;
 
 }

@@ -18,6 +18,11 @@ public class LogoutController extends AbstractController {
         if (Objects.nonNull(user)) {
             session.invalidate();
         }
-        jump(request, response, AppConstant.LOGIN_JSP);
+        jump(request, response, AppConstant.INDEX_JSP);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
     }
 }

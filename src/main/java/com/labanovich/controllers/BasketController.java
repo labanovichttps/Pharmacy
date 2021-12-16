@@ -30,12 +30,26 @@ public class BasketController extends AbstractController {
             String userID = String.valueOf(session.getAttribute("userID"));
             String cureID = request.getParameter("cure_id");
 
-            List<Cure> cures = null;
             try {
                 basketService.add(userID, cureID);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
+
+            jump(request, response, "/");
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if (Objects.isNull(session.getAttribute("userID"))) {
+            jumpMessage(request, response, "/basket.jsp", AppConstant.USER_NOT_AUTHORISED);
+        } else {
+
+            String userID = String.valueOf(session.getAttribute("userID"));
+
+            List<Cure> cures = null;
             try {
                 cures = basketService.getAllByUserId(userID);
             } catch (ServiceException e) {
@@ -44,10 +58,5 @@ public class BasketController extends AbstractController {
             session.setAttribute("cures", cures);
             jump(request, response, "/basket.jsp");
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
     }
 }

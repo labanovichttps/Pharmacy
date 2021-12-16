@@ -35,23 +35,23 @@
 
             <form class="form-fields" action="<c:url value="<%=AppConstant.REGISTRATION_CONTROLLER%>"/>" method="post">
                 <div class="form-field">
-                    <input type="text" maxlength="30" placeholder="Имя" name="<%=AppConstant.NAME_LABEL%>">
+                    <input type="text" required maxlength="30" placeholder="Имя" name="<%=AppConstant.NAME_LABEL%>">
                 </div>
 
                 <div class="form-field">
-                    <input type="text" maxlength="30" placeholder="Фамилия" name="<%=AppConstant.SURNAME_LABEL%>">
+                    <input type="text" required maxlength="30" placeholder="Фамилия" name="<%=AppConstant.SURNAME_LABEL%>">
                 </div>
 
                 <div class="form-field">
-                    <input type="email" maxlength="30" placeholder="Эл. почта" name="<%=AppConstant.EMAIL_LABEL%>">
+                    <input type="email" required maxlength="30" placeholder="Эл. почта" name="<%=AppConstant.EMAIL_LABEL%>">
                 </div>
 
                 <div class="form-field">
-                    <input type="text" maxlength="30" placeholder="Логин" name="<%=AppConstant.LOGIN_LABEL%>">
+                    <input type="text" maxlength="30" required placeholder="Логин" name="<%=AppConstant.LOGIN_LABEL%>">
                 </div>
 
                 <div class="form-field">
-                    <input type="password" maxlength="30" placeholder="Пароль" name="<%=AppConstant.PASSWORD_LABEL%>">
+                    <input type="password" required maxlength="30" placeholder="Пароль" name="<%=AppConstant.PASSWORD_LABEL%>">
                 </div>
                 <button type="submit" class="button">Регистрация</button>
             </form>

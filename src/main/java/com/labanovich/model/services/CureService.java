@@ -6,6 +6,7 @@ import com.labanovich.model.entities.Cure;
 import com.labanovich.model.exceptions.DAOException;
 import com.labanovich.model.exceptions.ServiceException;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class CureService {
@@ -23,6 +24,23 @@ public class CureService {
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
+    }
+
+
+    public boolean add(String name, String dose, String deliveryTime,
+                       String description, String typeId, String price){
+        int tId = Integer.parseInt(typeId);
+        double cPr = Double.parseDouble(price);
+        return cureDAO.add(name, dose, deliveryTime, description, tId, cPr);
+    }
+
+    public boolean delete(String id){
+        int cId = Integer.parseInt(id);
+        return cureDAO.delete(cId);
+    }
+
+    public List<Cure> getAllUserAdmin(String id, String timestamp){
+        return cureDAO.getAdminUser(Integer.parseInt(id), Timestamp.valueOf(timestamp));
     }
 
 

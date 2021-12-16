@@ -57,7 +57,7 @@
             </div>
 
             <div>
-                <button id="cure_send" onclick="window.location.href='JavaScript:sendIdForm(${cure.id})'" href="JavaScript:sendIdForm(${cure.id})" class="price-button">
+                <button id="cure_send" onclick="window.location.href='JavaScript:sendIdForm(${cure.id})'" class="price-button">
                         ${cure.price} BYN
                 </button>
             </div>
