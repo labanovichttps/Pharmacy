@@ -44,7 +44,7 @@
                         <button class="dropbtn">${user.login}</button>
                         <div class="dropdown-content">
                             <a href="<c:url value="/Profile.jsp"/>">Профиль</a>
-                            <a href="#">Мои заказы</a>
+                            <a href="<c:url value="/my_orders.jsp"/>">Мои заказы</a>
                             <a href="<c:url value="/logout"/>">Выйти</a>
                         </div>
                     </div>

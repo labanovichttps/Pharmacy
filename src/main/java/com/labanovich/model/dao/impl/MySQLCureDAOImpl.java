@@ -4,6 +4,7 @@ import com.labanovich.constants.SqlConstants;
 import com.labanovich.model.dao.interfaces.CureDAO;
 import com.labanovich.model.db.ConnectionManager;
 import com.labanovich.model.entities.Cure;
+import com.labanovich.model.entities.Type;
 import com.labanovich.model.exceptions.DAOException;
 
 import java.sql.*;
@@ -11,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLCureDAOImpl implements CureDAO {
-
-
     @Override
     public List<Cure> getAll() throws DAOException {
         List<Cure> cures = new ArrayList<>();
@@ -27,7 +26,8 @@ public class MySQLCureDAOImpl implements CureDAO {
                 String deliveryTime = resultSet.getString("delivery_time");
                 String description = resultSet.getString("description");
                 double price = resultSet.getDouble("price");
-                Cure cure = new Cure(id, name, type, dose, deliveryTime, description, price);
+                String country = resultSet.getString("country");
+                Cure cure = new Cure(id, name, type, dose, deliveryTime, description, price, country);
                 cures.add(cure);
             }
         } catch (SQLException e) {
@@ -39,7 +39,7 @@ public class MySQLCureDAOImpl implements CureDAO {
     }
 
     @Override
-    public boolean add(String name, String dose, String deliveryTime, String description, int typeId, double price) {
+    public boolean add(String name, String dose, String deliveryTime, String description, int typeId, double price, String country) {
         boolean isAdded = false;
         try (var connection = ConnectionManager.open();
              var ps = connection.prepareStatement(SqlConstants.ADD_NEW_CURE)) {
@@ -49,6 +49,7 @@ public class MySQLCureDAOImpl implements CureDAO {
             ps.setString(4, description);
             ps.setInt(5, typeId);
             ps.setDouble(6, price);
+            ps.setString(7, country);
             isAdded = ps.executeUpdate() == 1;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -72,6 +73,26 @@ public class MySQLCureDAOImpl implements CureDAO {
     }
 
     @Override
+    public boolean edit(int id, String name, String dose, String deliveryTime, String description, int typeId, double price, String country) {
+        boolean isEdited = false;
+        try (var connection = ConnectionManager.open();
+             var ps = connection.prepareStatement(SqlConstants.EDIT_CURE)) {
+            ps.setString(1, name);
+            ps.setString(2, dose);
+            ps.setString(3, deliveryTime);
+            ps.setString(4, description);
+            ps.setInt(5, typeId);
+            ps.setDouble(6, price);
+            ps.setString(7, country);
+            ps.setInt(8, id);
+            isEdited = ps.executeUpdate() == 1;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return isEdited;
+    }
+
+    @Override
     public List<Cure> getAdminUser(int id, Timestamp orderTime) {
         List<Cure> cures = new ArrayList<>();
         try (var connection = ConnectionManager.open();
@@ -87,7 +108,8 @@ public class MySQLCureDAOImpl implements CureDAO {
                 String description = rs.getString("description");
                 double price = rs.getDouble("price");
                 String deliveryTime = rs.getString("delivery_time");
-                Cure cure = new Cure(id1, name, type, dose, deliveryTime, description, price);
+                String country = rs.getString("country");
+                Cure cure = new Cure(id1, name, type, dose, deliveryTime, description, price, country);
                 cures.add(cure);
             }
         } catch (SQLException e) {
@@ -98,5 +120,22 @@ public class MySQLCureDAOImpl implements CureDAO {
         return cures;
     }
 
+    public List<Type> getAllTypes(){
+        List<Type> types = new ArrayList<>();
+        try (var connection = ConnectionManager.open();
+             var ps = connection.prepareStatement(SqlConstants.GET_ALL_TYPES)) {
+            var rs = ps.executeQuery();
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String typeFc = rs.getString("type");
+                Type type = new Type(id, typeFc);
+                types.add(type);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return types;
+    }
 
 }

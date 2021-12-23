@@ -7,8 +7,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "RemoveCureController", value = "/remove_cure")
-public class RemoveCureController extends HttpServlet {
+@WebServlet(name = "AddDrugController", value = "/add_drug")
+public class AddDrugController extends HttpServlet {
     private CureService cureService;
 
     @Override
@@ -23,8 +23,14 @@ public class RemoveCureController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String cureID = request.getParameter("idForDel");
-        boolean delete = cureService.delete(cureID);
+        String cname = request.getParameter("cname");
+        String ctype = request.getParameter("ctype");
+        String count = request.getParameter("count");
+        String country = request.getParameter("country");
+        String delDate = request.getParameter("cDate");
+        String cost = request.getParameter("cost");
+
+        cureService.add(cname,count, delDate, "", ctype, cost, country);
         request.getRequestDispatcher("/admin_panelAllDrugs.jsp")
                 .forward(request, response);
     }

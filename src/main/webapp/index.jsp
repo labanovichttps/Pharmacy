@@ -1,4 +1,3 @@
-<%@ page import="com.labanovich.constants.AppConstant" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -45,12 +44,12 @@
             </div>
 
             <div class="form-text">
-                   Колличество: ${cure.dose}
+                   Количество: ${cure.dose}
             </div>
 
             <div class="info">
 
-                <div class="form-text">Производитель: ГЕРМАНИЯ</div>
+                <div class="form-text">Производитель: ${cure.country}</div>
 
                 <div class="form-text">Срок доставки: ${cure.deliveryTime}</div>
 

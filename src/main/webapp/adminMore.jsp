@@ -24,7 +24,7 @@
         <div class="dropdown">
             <button class="dropbtn">Admin</button>
             <div class="dropdown-content">
-                <a href="#">Все лекарства</a>
+                <a href="<c:url value="/admin_panelAllDrugs.jsp"/>">Все лекарства</a>
                 <a href="<c:url value="/admin_panel_orders.jsp"/>">Все заказы</a>
                 <a href="<c:url value="/logout"/>">Выйти</a>
             </div>
@@ -54,7 +54,7 @@
 
             <div class="info">
 
-                <div class="form-text">ГЕРМАНИЯ</div>
+                <div class="form-text">${cure.country}</div>
 
                 <div class="form-text">${cure.deliveryTime}</div>
 

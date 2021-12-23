@@ -6,7 +6,7 @@ public final class SqlConstants {
     public static final String GET_USER_BY_LOGIN = "select id, login, name, surname, email, password from users where login like ? and password like ?";
     public static final String GET_USER_BY_ID = "select id, login, name, surname, email from users where id = ?;";
     public static final String GET_ALL_CURES = """
-            select cure.id, name, ct.type, dose, delivery_time, description, price
+            select cure.id, name, ct.type, dose, delivery_time, description, price, country
             from cure
                      inner join cure_type ct on cure.type_id = ct.id;""";
 
@@ -22,6 +22,7 @@ public final class SqlConstants {
                    type_id,
                    price,
                    type,
+                   country,
                    ub.id basket_cure_id,
                    ub.user_id,
                    ub.cure_id,
@@ -63,12 +64,12 @@ public final class SqlConstants {
             """;
 
     public static final String GET_ORDERS_BY_ID = """
-            select id, user_initials, user_email, total, order_time
+            select id, user_id, user_initials, user_email, round(total,2) as total, order_time
             from `user-order`
             where user_id = ?;
             """;
 
-    public static final String GET_ALL_ORDERS = "select id, user_id,user_initials, user_email, total, order_time\n" +
+    public static final String GET_ALL_ORDERS = "select id, user_id,user_initials, user_email, round(total,2) as total, order_time\n" +
                                                 "from `user-order`;";
 
     public static final String EDIT_USER = """
@@ -81,20 +82,35 @@ public final class SqlConstants {
             from cure
             where id = ?
             """;
+    public static final String EDIT_CURE = """
+            update cure
+            set name = ?,
+            dose = ?,
+            delivery_time = ?,
+            description = ?,
+            type_id = ?,
+            price = ?,
+            country = ?
+            where id = ?
+            """;
 
     public static final String ADD_NEW_CURE = """
-            insert into cure (name, dose, delivery_time, description, type_id, price)
-            values (?, ?, ?, ?, ?, ?);
+            insert into cure (name, dose, delivery_time, description, type_id, price, country)
+            values (?, ?, ?, ?, ?, ?, ?);
             """;
 
     public static final String GET_ADMIN_USER_ORDERS = """
-            select c.id, ct.type, c.name, c.dose, c.price, c.delivery_time, c.description
+            select c.id, ct.type, c.name, c.dose, c.price, c.delivery_time, c.description, country
             from (select cure_id
                   from user_order_cures
                   where user_id = ?
                     and order_date = ?) t
                      join cure c on cure_id = c.id
                      join cure_type ct on c.type_id = ct.id;
+            """;
+
+    public static final String GET_ALL_TYPES  = """
+            select id, type from cure_type;
             """;
 
 }

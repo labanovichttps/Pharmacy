@@ -1,0 +1,4 @@
+ЗАКАЗ
+Order(id=28, user_id=1, initials=Tsimafei Labanovich, email=loverloser@gmail.com, total=67.43, orderDate=2021-12-12 18:44:03.0)
+содержит заказы [Cure(id=2, name=Ринза, type=Жаропонижащее, dose=20 таблеток, deliveryTime=2 дня, description=ашощышаощывшаощ оаыщш, price=9.99, basketCureId=0, country=Germany), Cure(id=4, name=Окситоцин, type=Наркотики, dose=15 таблеток, deliveryTime=15 дней, description=аышвгаршывгр шаыгвр наркотики !зло, price=17.42, basketCureId=0, country=Nederland), Cure(id=6, name=Лопракс, type=Антибиотики, dose=7 таблеток, deliveryTime=20 дней, description=ываываываыва, price=5.02, basketCureId=0, country=Belarus), Cure(id=7, name=Амоксицилин, type=Антибиотики, dose=12 таблеток, deliveryTime=7 дней, description=ываываошщ шоыщвашо, price=35.0, basketCureId=0, country=Russia)]
+67.43

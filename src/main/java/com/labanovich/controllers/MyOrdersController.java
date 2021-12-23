@@ -1,6 +1,7 @@
 package com.labanovich.controllers;
 
 import com.labanovich.model.entities.Order;
+import com.labanovich.model.entities.User;
 import com.labanovich.model.services.OrderService;
 
 import javax.servlet.*;
@@ -21,8 +22,8 @@ public class MyOrdersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String userId = String.valueOf(session.getAttribute("user_id"));
-        List<Order> userOrders = orderService.getByUserId(userId);
+        User user = (User) session.getAttribute("user");
+        List<Order> userOrders = orderService.getByUserId(user.getId() + "");
         request.setAttribute("userOrders", userOrders);
     }
 

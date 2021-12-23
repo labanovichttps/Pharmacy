@@ -18,9 +18,10 @@ public class Cure {
     private String description;
     private double price;
     private int basketCureId;
+    private String country;
 
 
-    public Cure(int id, String name, String type, String dose, String deliveryTime, String description, double price) {
+    public Cure(int id, String name, String type, String dose, String deliveryTime, String description, double price, String country) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -28,5 +29,8 @@ public class Cure {
         this.deliveryTime = deliveryTime;
         this.description = description;
         this.price = price;
+        this.country = country;
     }
+
+
 }

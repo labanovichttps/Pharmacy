@@ -52,7 +52,8 @@ public class MySQLBasketImpl implements BasketDAO {
                 String description = resultSet.getString("description");
                 double price = resultSet.getDouble("price");
                 int basketCureId = resultSet.getInt("basket_cure_id");
-                Cure cure = new Cure(id, name, type, dose, deliveryTime, description, price, basketCureId);
+                String country = resultSet.getString("country");
+                Cure cure = new Cure(id, name, type, dose, deliveryTime, description, price, basketCureId, country);
 
                 cures.add(cure);
             }

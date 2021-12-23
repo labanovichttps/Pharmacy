@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#a{
+    color: #fff;
+    text-decoration: none;
+}
+
+#a:hover {
+    text-decoration: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Roboto';
+}
+
+/* Шапка сайта */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    background-color: #006C84;
+}
+
+.logo {
+    display: flex;
+    align-items: center;    
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 36px;
+    color: #fff;
+    margin-left: 3%;
+    height: 100%;
+}
+
+.entry {
+    display: flex;
+    justify-content: space-between;
+    color:#006C84;
+    height: 100%;
+    flex-basis: 12%;
+    margin-right: 1%;
+}
+
+.button1 {
+    display: flex;
+    align-items: center;
+    background-color: #006C84;
+    margin-right: 30px;
+}
+
+.button2 {
+    display: flex;
+    align-items: center;
+    background-color: #006C84;
+}
+
+.button-text {
+    color:#fff;
+}
+
+.button-text:hover {
+    text-decoration: none;
+    color: #cccccc;
+}
+
+.busket {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-items: start;
+    min-width: 300px;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 300;
+}
+
+.busket a {
+    text-decoration: none;
+    color:#fff;
+}
+
+.busket a:hover {
+    text-decoration: none !important;
+    color: #cccccc;
+}
+
+.busket-circle {
+    position: absolute;
+    width: 25px; 
+    height: 25px;
+    background: rgb(22, 214, 79);
+    border-radius: 50%;
+    left: 80px;
+    top: -10px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 24px;
+    color: #fff;
+}
+
+.right-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropbtn {
+    background-color: #006C84;
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    line-height: 21px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    min-width: 160px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline;
+    justify-items: end;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    align-items: center;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #f1f1f1;
+    align-items: center;
+    text-decoration: none !important;
+    color:black;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #0a677c;
+}
+
+
+
+
+
+
+/* Строка поиска */
+
+.searching {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 97px;   
+}
+
+.search {
+    position: relative;
+    width: 460px;
+    margin-top: 24px;
+    margin-left: 3%;
+}
+
+input {
+    width: 100%;
+    height: 42px;
+    padding: 0.375rem 0.75rem;
+    border: 2px solid #006C84;
+    outline: none;
+}
+
+/* Формы с таблетками */
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:start;
+    grid-row-gap: 30px;
+    grid-column-gap: 70px;
+    margin: 0 3%;
+}
+
+.drug-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px solid #006C84;
+    width: 21%;
+}
+
+.form-title {
+    width: 100%;
+    height: 27px;
+    background-color: #006C84;
+    font-size: 20px;
+    line-height: 23px;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+}
+
+.circle {
+    width: 51px; 
+    height: 51px;
+    background: #003B48;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.classification {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.form-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.info {
+    margin-top: 10px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button-change {
+    margin-top: 15px;
+    margin-bottom: 11px;
+    width: 100px;
+    height: 27px;
+    background: #fff;
+    cursor: pointer;
+    border: 0.8px solid #94a500;
+
+    text-align: center;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #94a500; 
+
+    transition-duration: 0.5s;
+}
+
+.button-change a {
+    text-align: center;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #94a500; 
+}
+
+.button-change:hover {
+    background-color: #94a500;
+    color: #94a500;
+    transition-duration: 0.5s;
+}
+
+.button-change a {
+    text-decoration: none !important;
+    transition-duration: 0.2s;
+    color:#94a500;
+}
+
+.button-change a:hover {
+    color: #fff;
+    transition-duration: 0.2s;
+}
+
+.button-delete {
+    margin-top: 15px;
+    margin-bottom: 11px;
+    width: 100px;
+    height: 27px;
+    background: #fff;
+    cursor: pointer;
+    border: 0.8px solid #ac0000;
+
+    text-align: center;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #ac0000;
+
+    transition-duration: 0.5s;
+}
+
+.button-delete:hover {
+    background-color: #ac0000;
+    color:#fff;
+    transition-duration: 0.5s;
+}

@@ -33,6 +33,6 @@ public class DeleteCureFromBasketController extends AbstractController {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        jump(request, response, "basket.jsp");
+        jump(request, response, "/");
     }
 }

@@ -49,7 +49,7 @@
 
             <div class="info">
 
-                <div class="form-text">Германия</div>
+                <div class="form-text">${cure.country}</div>
 
                 <div class="form-text">${cure.deliveryTime}</div>
 
