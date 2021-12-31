@@ -1,0 +1,4 @@
+ЗАКАЗ
+Order(id=35, user_id=1, initials=Tsimafei Labanovich, email=loverloser@gmail.com, total=107.02, orderDate=2021-12-24 11:24:05.0)
+содержит заказы [Cure(id=11, name=plaster, type=HotDown, dose=12 units, deliveryTime=16 days, description=, price=12.0, basketCureId=0, country=USA), Cure(id=7, name=Amoxitsilin, type=HotDown, dose=12 pills, deliveryTime=7 days, description=, price=90.0, basketCureId=0, country=Russia), Cure(id=6, name=Loprax, type=Harmones, dose=7 pills, deliveryTime=20 days, description=, price=5.02, basketCureId=0, country=Belarus)]
+107.02

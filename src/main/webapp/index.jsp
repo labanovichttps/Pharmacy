@@ -12,18 +12,23 @@
     <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <script src="webjars/jquery/1.10.2/jquery.min.js"></script>
-    <script src="static/js/main.js"></script>
 </head>
 <body>
 
 <jsp:include page="templates/header.jsp"/>
-
+<c:import url="/all_types"/>
+<c:set var="typ" value="${requestScope.types}"/>
 <div class="searching">
     <%--Поиск--%>
     <div class="search">
         <input type="text" id="search_cure" placeholder="Искать здесь...">
     </div>
-
+    <div class="filter">
+        <button class="button" data-filter="all">ALL</button>
+        <c:forEach var="ty" items="${typ}">
+            <button class="button" data-filter="${ty.name}">${ty.name}</button>
+        </c:forEach>
+    </div>
 </div>
 
 <c:import url="/cures"/>
@@ -32,19 +37,19 @@
 <div class="main">
 
     <c:forEach items="${myCures}" var="cure" varStatus="i">
-        <div class="drug-form-container">
+        <div class="drug-form-container ${cure.type}">
             <h1 class="form-title">
                     ${cure.name}
             </h1>
 
             <div class="circle"></div>
 
-            <div class="classification">
+            <div class="classification" >
                     ${cure.type}
             </div>
 
             <div class="form-text">
-                   Количество: ${cure.dose}
+                Количество: ${cure.dose}
             </div>
 
             <div class="info">
@@ -56,7 +61,8 @@
             </div>
 
             <div>
-                <button id="cure_send" onclick="window.location.href='JavaScript:sendIdForm(${cure.id})'" class="price-button">
+                <button id="cure_send" onclick="window.location.href='JavaScript:sendIdForm(${cure.id})'"
+                        class="price-button">
                         ${cure.price} BYN
                 </button>
             </div>
@@ -72,5 +78,7 @@
     <input type="hidden" name="cure_id">
 </form>
 
+<script src="static/js/filtration.js"></script>
+<script src="static/js/main.js"></script>
 </body>
 </html>
